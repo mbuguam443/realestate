@@ -1,0 +1,39 @@
+from django.shortcuts import render
+
+# Create your views here.
+def home(request):
+    return render(request,'index.html')
+def about(request):
+    return render(request,'about.html')
+def notfound(request):
+    return render(request,'404.html')
+def agent_profile(request):
+    return render(request,'agent_profile.html')
+def blog_post(request):
+    return render(request,'blog-post.html')
+def blog(request):
+    return render(request,'blog.html')
+def contact(request):
+    return render(request,'contact.html')
+def faq(request):
+    return render(request,'faq.html')
+def property_details(request):
+    return render(request,'property-details.html')
+def property(request):
+    return render(request,'property.html')
+def register(request):
+    return render(request,'register.html')
+def login(request):
+    return render(request,'login.html')
+def single_agent(request):
+    return render(request,'single_agent.html')
+def thank_you(request):
+    return render(request,'thank-you.html')
+def index_map(request):
+    return render(request,'index_map.html')
+def index_parallax(request):
+    return render(request,'index_parallax.html')
+def index_slideshow(request):
+    return render(request,'index_slideshow.html')
+def index_video(request):
+    return render(request,'index_video.html')
