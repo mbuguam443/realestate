@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+	<!-- START SECTION TOP -->
+	<section class="section-top">
+		<div class="container">
+			<div class="col-lg-10 offset-lg-1 col-xs-12 text-center">
+				<div class="section-top-title wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s"
+					data-wow-offset="0">
+					<h1>Message Center</h1>
+				</div><!-- //.HERO-TEXT -->
+			</div><!--- END COL -->
+		</div><!--- END CONTAINER -->
+	</section>
+	<!-- END SECTION TOP -->
+
+	<!-- START AGENT PROFILE -->
+	<section class="template_agent">
+		<div class="container">
+			<div class="row">
+				
+				<div class="col-lg-10  offset-lg-1 col-sm-12 col-xs-12">
+					{% for enquiry in enquiries %}
+					<div class="single_agent mt-3">
+						
+						<div class="single_agent_content">
+							<h4>{{ enquiry.name }}</h4>
+							<h6>{{ enquiry.message }}.</h6>
+							<p><i class="fa fa-envelope-o"></i>{{ enquiry.email }}</p>
+							<p><i class="fa fa-phone"></i>{{ enquiry.phone }}</p>
+							<p><i class="fa fa-skype"></i>{{ enquiry.created_at }}</p>
+							{% if not enquiry.is_read %}
+							<a  href="{% url 'markread' enquiry.id %}" class="btn btn-danger">Read</a>
+							{% endif %}
+						</div>
+						
+						
+					</div>
+					{% empty %}
+						<div class="single_agent">
+							
+							<h6>No enquiries found..</h6>
+					    </div>
+					{% endfor %}
+					<!--- END SINGLE ITEM -->
+					<!--- END SINGLE ITEM -->
+				</div><!--- END COL -->
+			</div><!--- END ROW -->
+		</div><!--- END CONTAINER -->
+	</section>
+	<!-- END AGENT PROFILE -->
+{% endblock %}
+	

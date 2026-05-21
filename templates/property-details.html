@@ -138,9 +138,16 @@
 				</div><!--- END COL -->
 				<div class="col-md-3 col-sm-3 col-xs-12">
 					<div class="single_property_form">
+						{% if messages %}
+							{% for message in messages %}
+								<div class="alert alert-success">
+									{{ message }}
+								</div>
+							{% endfor %}
+						{% endif %}
 						<h4>Enquire here</h4>
-						<form class="form" name="enq" method="post" action="contact.php"
-							onsubmit="return validation();">
+						<form class="form"  method="post">
+							{% csrf_token %}
 							<div class="row">
 								<div class="form-group col-md-12">
 									<input type="text" name="name" class="form-control" id="first-name"

@@ -28,21 +28,24 @@
 								</ul>
 							</li>
 							<li><a class="nav-link" href="{% url 'about' %}">about</a></li>
-							<li class="has-children">
-								<a href="{% url 'property' %}" class="nav-link">Property</a>
-								<ul class="dropdown">
-									
-								</ul>
-							</li>
-							<li><a href="{% url 'agent_profile' %}">Gallery</a></li>
+							{% if user.is_authenticated %}
+							<li><a class="nav-link" href="{% url 'messagesClient' %}">Client Message {% if unread_count > 0 %}
+								<span class="badge bg-danger">
+									{{ unread_count }}
+								</span>
+								{% endif %}</a></li>
+							{% endif %}
+							<li><a class="nav-link" href="{% url 'property' %}">Property</a></li>
 							<li class="has-children">
 								<a href="#" class="nav-link">Pages</a>
 								<ul class="dropdown">
+									
 									<li><a href="{% url 'agent_profile' %}" class="nav-link">agent profile</a></li>
 									<li><a href="{% url 'login' %}" class="nav-link">login page</a></li>
 									<li><a href="{% url 'register' %}" class="nav-link">register page</a></li>
 									<li><a href="{% url 'faq' %}" class="nav-link">Faqs</a></li>
 									<li><a href="{% url 'notfound' %}" class="nav-link">404 page</a></li>
+									<li><a href="{% url 'logout' %}" class="nav-link">Log out</a></li>
 								</ul>
 							</li>
 							<li class="has-children">

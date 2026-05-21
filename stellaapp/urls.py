@@ -11,7 +11,7 @@ urlpatterns = [
     path('blog',views.blog,name='blog'),
     path('contact',views.contact,name='contact'),
     path('faq',views.faq,name='faq'),
-    path('login',views.login,name='login'),
+    path('login',views.login_view,name='login'),
     path('property_details/<int:pk>/',views.property_details,name='property_details'),
     path('property',views.property,name='property'),
     path('register',views.register,name='register'),
@@ -22,5 +22,7 @@ urlpatterns = [
     path('index_slideshow',views.index_slideshow,name='index_slideshow'),
     path('index_video',views.index_video,name='index_video'),
     path('postproperty',views.postproperty,name='postproperty'),
-    
+    path('messagesClient',views.messagesClient,name='messagesClient'),
+    path('logout', views.logout_view, name='logout'),
+    path('markread/<int:pk>/',views.markread, name='markread')
 ]
