@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- START SECTION TOP -->
+<section class="section-top">
+	<div class="container">
+		<div class="col-lg-10 offset-lg-1 col-xs-12 text-center">
+			<div class="section-top-title wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s"
+				data-wow-offset="0">
+				<h1>Post Property</h1>
+			</div><!-- //.HERO-TEXT -->
+		</div><!--- END COL -->
+	</div><!--- END CONTAINER -->
+</section>
+<!-- END SECTION TOP -->
+
+<!-- START CONTACT FORM  -->
+<section class="contact-area section-padding">
+	<div class="container">
+		<div class="section-title text-center wow zoomIn">
+			<h2>Created Property</h2>
+			<div></div>
+		</div>
+		<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="single_contact_one">
+            <div class="contact">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    <div class="row">
+
+                        <!-- Property Title -->
+                        <div class="form-group col-md-6">
+                            {{ form.title }}
+                            {% if form.title.errors %}
+                                <small class="text-danger">{{ form.title.errors.0 }}</small>
+                            {% endif %}
+                        </div>
+
+                        <!-- Property Location -->
+                        <div class="form-group col-md-6">
+                            {{ form.location }}
+                            {% if form.location.errors %}
+                                <small class="text-danger">{{ form.location.errors.0 }}</small>
+                            {% endif %}
+                        </div>
+
+                        <!-- Price -->
+                        <div class="form-group col-md-6">
+                            {{ form.price }}
+                            {% if form.price.errors %}
+                                <small class="text-danger">{{ form.price.errors.0 }}</small>
+                            {% endif %}
+                        </div>
+
+                        <!-- Area -->
+                        <div class="form-group col-md-6">
+                            {{ form.area }}
+                            {% if form.area.errors %}
+                                <small class="text-danger">{{ form.area.errors.0 }}</small>
+                            {% endif %}
+                        </div>
+
+                        <!-- Bedrooms -->
+                        <div class="form-group col-md-6">
+                            {{ form.bedrooms }}
+                            {% if form.bedrooms.errors %}
+                                <small class="text-danger">{{ form.bedrooms.errors.0 }}</small>
+                            {% endif %}
+                        </div>
+
+                        <!-- Bathrooms -->
+                        <div class="form-group col-md-6">
+                            {{ form.bathrooms }}
+                            {% if form.bathrooms.errors %}
+                                <small class="text-danger">{{ form.bathrooms.errors.0 }}</small>
+                            {% endif %}
+                        </div>
+
+                        <!-- Image Upload -->
+                        <div class="form-group col-md-12">
+                            <label for="{{ form.image.id_for_label }}">Property Image</label>
+                            {{ form.image }}
+                            {% if form.image.errors %}
+                                <small class="text-danger">{{ form.image.errors.0 }}</small>
+                            {% endif %}
+                        </div>
+
+                        <!-- Description -->
+                        <div class="form-group col-md-12">
+                            {{ form.description }}
+                            {% if form.description.errors %}
+                                <small class="text-danger">{{ form.description.errors.0 }}</small>
+                            {% endif %}
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="col-md-12 text-center">
+                            <button type="submit"
+                                    class="btn btn-contact-bg"
+                                    title="Submit Property">
+                                Post Property
+                            </button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+	</div><!--- END CONTAINER -->
+</section>
+<!-- END CONTACT FORM -->
+
+
+
+
+{% endblock %}

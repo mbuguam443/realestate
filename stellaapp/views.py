@@ -1,5 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
+from .models import Property
+from django.shortcuts import render, get_object_or_404
 
+from .forms import PropertyForm
 # Create your views here.
 def home(request):
     return render(request,'index.html')
@@ -17,10 +20,28 @@ def contact(request):
     return render(request,'contact.html')
 def faq(request):
     return render(request,'faq.html')
-def property_details(request):
-    return render(request,'property-details.html')
+def property_details(request, pk):
+    # Get a single property by its primary key (id)
+    property = get_object_or_404(Property, pk=pk)
+
+    # Get two similar properties (excluding the current one)
+    similar_properties = Property.objects.exclude(pk=pk)[:2]
+
+    context = {
+        'property': property,
+        'similar_properties': similar_properties,
+    }
+
+    return render(request, 'property-details.html', context)
 def property(request):
-    return render(request,'property.html')
+    # Fetch all properties from the database
+    properties = Property.objects.all().order_by('-id')
+
+    # Send the properties to property.html
+    mydict = {
+        'properties': properties
+    }
+    return render(request, 'property.html', context=mydict)
 def register(request):
     return render(request,'register.html')
 def login(request):
@@ -37,3 +58,24 @@ def index_slideshow(request):
     return render(request,'index_slideshow.html')
 def index_video(request):
     return render(request,'index_video.html')
+def postproperty(request):
+    # Check if the form has been submitted
+    if request.method == 'POST':
+        # Create form instance with submitted data and uploaded files
+        form = PropertyForm(request.POST, request.FILES)
+
+        # Validate the form
+        if form.is_valid():
+            # Save property to the database
+            form.save()
+            print("form saved successfully...")
+            # Redirect to property listing page after saving
+            return redirect('property')   # Change to your actual URL name
+    else:
+        # Create an empty form when the page is first loaded
+        form = PropertyForm()
+
+    # Send the form to the template
+    return render(request, 'postproperty.html', {
+        'form': form
+    })

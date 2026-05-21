@@ -12,7 +12,7 @@ urlpatterns = [
     path('contact',views.contact,name='contact'),
     path('faq',views.faq,name='faq'),
     path('login',views.login,name='login'),
-    path('property_details',views.property_details,name='property_details'),
+    path('property_details/<int:pk>/',views.property_details,name='property_details'),
     path('property',views.property,name='property'),
     path('register',views.register,name='register'),
     path('single_agent',views.single_agent,name='single_agent'),
@@ -21,6 +21,6 @@ urlpatterns = [
     path('index_parallax',views.index_parallax,name='index_parallax'),
     path('index_slideshow',views.index_slideshow,name='index_slideshow'),
     path('index_video',views.index_video,name='index_video'),
-    
+    path('postproperty',views.postproperty,name='postproperty'),
     
 ]

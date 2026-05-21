@@ -9,7 +9,7 @@
 			<div class="col-lg-10 offset-lg-1 col-xs-12 text-center">
 				<div class="section-top-title wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s"
 					data-wow-offset="0">
-					<h1>Single Property</h1>
+					<h1>Property Description</h1>
 				</div><!-- //.HERO-TEXT -->
 			</div><!--- END COL -->
 		</div><!--- END CONTAINER -->
@@ -22,27 +22,25 @@
 			<div class="row">
 				<div class="col-md-9 col-sm-9 col-xs-12">
 					<div class="property_single_details_slide">
-						<img src="{% static 'assets/img/2.jpg' %}" class="img-fluid" alt="About-Slide">
+						{% if property.image %}
+							<img src="{{ property.image.url }}" class="img-fluid" alt="{{ property.title }}">
+						{% else %}
+							<img src="{% static 'assets/img/2.jpg' %}" class="img-fluid" alt="{{ property.title }}">
+						{% endif %}
 					</div>
 					<div class="property_single_details_price">
-						<h1>2045 B Street</h1>
-						<h4>$235,254</h4>
-						<p>2369 Robinson Lane Jackson, OH 45640</p>
+						<h1>{{ property.title }}</h1>
+						<h4>Ksh {{ property.price }}</h4>
+						<p>{{ property.location }}</p>
 						<ul>
-							<li><i class="fa fa-check"></i> 4 bed rooms</li>
-							<li><i class="fa fa-check"></i> 1 garage</li>
-							<li><i class="fa fa-check"></i> 960 sq ft</li>
+							<li><i class="fa fa-check"></i> {{ property.bedrooms }} bed rooms</li>
+							<li><i class="fa fa-check"></i> {{ property.bathrooms }} garage</li>
+							<li><i class="fa fa-check"></i> {{ property.area }} sq ft</li>
 						</ul>
 					</div>
 					<div class="property_single_details_description">
 						<h4>Property description</h4>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-							been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-							galley of type and scrambled it to make a type specimen book. It has survived not only five
-							centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-							It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
-							passages, and more recently with desktop publishing software like Aldus PageMaker including
-							versions of Lorem Ipsum.</p>
+						<p>{{ property.description }}</p>
 					</div>
 					<div class="property_info">
 						<div class="row">
