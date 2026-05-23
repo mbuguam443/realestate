@@ -94,6 +94,36 @@
     {% endblock %}
 
 	{% include 'partials/footer.html' %}
+	<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/254728627678?text=Hello%20Ardivora%20Estates,%20I%20am%20interested%20in%20a%20property."
+   class="whatsapp-float"
+   target="_blank">
+    <i class="fa fa-whatsapp"></i>
+</a>
+
+<style>
+.whatsapp-float{
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 25px;
+    right: 25px;
+    background-color: #25D366;
+    color: #FFF;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 35px;
+    line-height: 60px;
+    z-index: 1000;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
+
+.whatsapp-float:hover{
+    color: white;
+    transform: scale(1.1);
+}
+</style>
 </body>
 
 </html>
