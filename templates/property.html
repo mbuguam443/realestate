@@ -62,7 +62,7 @@
 				<!-- Property Price and Location -->
 				<div class="single_property_price">
 					{{ property.location }}
-					<span>$ {{ property.price }}</span>
+					<span>Ksh {{ property.price }}</span>
 
 					<!-- Five Stars -->
 					<i class="fa fa-star"></i>
@@ -70,6 +70,20 @@
 					<i class="fa fa-star"></i>
 					<i class="fa fa-star"></i>
 					<i class="fa fa-star"></i>
+
+					{% if user.is_staff %}
+						<a href="{% url 'edit_property' property.id %}"
+						class="btn btn-success">
+							Edit
+						</a>
+
+						<a href="{% url 'delete_property' property.id %}"
+						class="btn btn-danger"
+						onclick="return confirm('Are you sure you want to delete {{ property.title }}?');">
+							Delete
+						</a>
+					{% endif %}
+
 				</div>
 
 			</div>
@@ -84,72 +98,7 @@
 	</section>
 	<!-- END  PROPERTY -->
 
-	<!-- START PROPERTY -->
-	<section class="template_property section-padding">
-		<div class="container">
-			<div class="section-title  text-center wow zoomIn">
-				<h2>Latest for Rent</h2>
-				<div></div>
-			</div>
-			<!-- property.html -->
-
-	<div class="row">
-		{% for property in properties %}
-		<div class="col-md-4 col-sm-12 col-xs-12">
-			<div class="single_property">
-
-				<!-- Property Image -->
-				{% if property.image %}
-					<img src="{{ property.image.url }}" class="img-fluid" alt="{{ property.title }}">
-				{% else %}
-					<img src="{% static 'assets/img/property/1.jpg' %}" class="img-fluid" alt="No Image">
-				{% endif %}
-                
-				<!-- Property Description -->
-				<div class="single_property_description text-center">
-					<span>
-						<i class="fa fa-object-group"></i>
-						{{ property.area }} sq ft 
-					</span>
-					<span>
-						<i class="fa fa-bed"></i>
-						{{ property.bedrooms }} Bedrooms
-					</span>
-					<span>
-						<i class="fa fa-star-o"></i>
-						{{ property.bathrooms }} Baths
-					</span>
-				</div>
-
-				<!-- Property Content -->
-				<div class="single_property_content">
-					<h4>
-						<a href="{% url 'property_details' property.id %}">{{ property.title }} </a>
-					</h4>
-					<p>{{ property.description|truncatewords:3 }}</p>
-				</div>
-
-				<!-- Property Price and Location -->
-				<div class="single_property_price">
-					{{ property.location }}
-					<span>$ {{ property.price }}</span>
-
-					<!-- Five Stars -->
-					<i class="fa fa-star"></i>
-					<i class="fa fa-star"></i>
-					<i class="fa fa-star"></i>
-					<i class="fa fa-star"></i>
-					<i class="fa fa-star"></i>
-				</div>
-
-			</div>
-		</div>
-		{% empty %}
-		<div class="col-12 text-center">
-			<p>No properties available.</p>
-		</div>
-		{% endfor %}
-	</div><!--- END ROW -->
+<!--- END ROW -->
 		</div><!--- END CONTAINER -->
 	</section>
 	<!-- END  PROPERTY -->

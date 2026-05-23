@@ -24,5 +24,10 @@ urlpatterns = [
     path('postproperty',views.postproperty,name='postproperty'),
     path('messagesClient',views.messagesClient,name='messagesClient'),
     path('logout', views.logout_view, name='logout'),
-    path('markread/<int:pk>/',views.markread, name='markread')
+    path('markread/<int:pk>/',views.markread, name='markread'),
+    path('gallery',views.gallery,name='gallery'),
+
+    path('property/delete/<int:pk>/',views.delete_property,name='delete_property'),
+    path('property/edit/<int:pk>/',views.edit_property,name='edit_property'),
+    path('search/',views.property_search,name='property_search')
 ]

@@ -18,15 +18,7 @@
 				<div class="col-12 col-md-10 d-none d-xl-block">
 					<nav class="site-navigation position-relative text-right" role="navigation">
 						<ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-							<li class="has-children">
-								<a href="{% url 'index' %}" class="nav-link">Home</a>
-								<ul class="dropdown">
-									<li><a href="{% url 'index_map' %}" class="nav-link">Home Map</a></li>
-									<li><a href="{% url 'index_parallax' %}" class="nav-link">Home Parallax</a></li>
-									<li><a href="{% url 'index_slideshow' %}" class="nav-link">Home Slider</a></li>
-									<li><a href="{% url 'index_video' %}" class="nav-link">Home video</a></li>
-								</ul>
-							</li>
+							<li><a class="nav-link" href="{% url 'index' %}">Home</a></li>
 							<li><a class="nav-link" href="{% url 'about' %}">about</a></li>
 							{% if user.is_authenticated %}
 							<li><a class="nav-link" href="{% url 'messagesClient' %}">Client Message {% if unread_count > 0 %}
@@ -37,9 +29,19 @@
 							{% endif %}
 							<li><a class="nav-link" href="{% url 'property' %}">Property</a></li>
 							<li class="has-children">
-								<a href="#" class="nav-link">Pages</a>
+								{% if user.is_authenticated %}
+									<a href="#" class="nav-link">
+										{{ user.username }}
+									</a>
+								{% else %}
+									<a href="#" class="nav-link">
+										Sub Menu
+									</a>
+								{% endif %}
 								<ul class="dropdown">
-									
+									{% if user.is_authenticated %}
+									<li><a href="{% url 'postproperty' %}" class="nav-link">Post Property</a></li>
+									{% endif %}
 									<li><a href="{% url 'agent_profile' %}" class="nav-link">agent profile</a></li>
 									<li><a href="{% url 'login' %}" class="nav-link">login page</a></li>
 									<li><a href="{% url 'register' %}" class="nav-link">register page</a></li>
@@ -48,13 +50,13 @@
 									<li><a href="{% url 'logout' %}" class="nav-link">Log out</a></li>
 								</ul>
 							</li>
-							<li class="has-children">
+							<!-- <li class="has-children">
 								<a href="{% url 'blog' %}" class="nav-link">Blog</a>
 								<ul class="dropdown">
 									<li><a href="{% url 'blog' %}" class="nav-link">Blog Post</a></li>
 									<li><a href="{% url 'blog_post' %}" class="nav-link">Blog Single</a></li>
 								</ul>
-							</li>
+							</li> -->
 							<li><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
 						</ul>
 					</nav>

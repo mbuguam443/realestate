@@ -34,7 +34,7 @@
 						<p>{{ property.location }}</p>
 						<ul>
 							<li><i class="fa fa-check"></i> {{ property.bedrooms }} bed rooms</li>
-							<li><i class="fa fa-check"></i> {{ property.bathrooms }} garage</li>
+							<li><i class="fa fa-check"></i> {{ property.bathrooms }} bathrooms</li>
 							<li><i class="fa fa-check"></i> {{ property.area }} sq ft</li>
 						</ul>
 					</div>
@@ -85,54 +85,75 @@
 					</div>
 					<div class="single_similar_property">
 						<div class="row">
-							<div class="col-md-6 col-sm-6 col-xs-12">
+							{% for prop in similar_properties %}
+							<div class="col-md-4 col-sm-12 col-xs-12">
 								<div class="single_property">
-									<img src="{% static 'assets/img/property/1.jpg' %}" class="img-fluid" alt="" />
+
+									<!-- Property Image -->
+									{% if prop.image %}
+										<img src="{{ prop.image.url }}" class="img-fluid" alt="{{ prop.title }}">
+									{% else %}
+										<img src="{% static 'assets/img/property/1.jpg' %}" class="img-fluid" alt="No Image">
+									{% endif %}
+									
+									<!-- Property Description -->
 									<div class="single_property_description text-center">
-										<span><i class="fa fa-object-group"></i> 900 sq ft</span>
-										<span><i class="fa fa-bed"></i> 4 Badrooms</span>
-										<span><i class="fa fa-star-o"></i> 2 Baths</span>
+										<span>
+											<i class="fa fa-object-group"></i>
+											{{ prop.area }} sq ft 
+										</span>
+										<span>
+											<i class="fa fa-bed"></i>
+											{{ prop.bedrooms }} Bedrooms
+										</span>
+										<span>
+											<i class="fa fa-star-o"></i>
+											{{ prop.bathrooms }} Baths
+										</span>
 									</div>
+
+									<!-- Property Content -->
 									<div class="single_property_content">
-										<h4><a href="#">2045 B Street</a></h4>
-										<p>Lorem Ipsum is not simply random text. It has roots in a piece of classical.
-										</p>
+										<h4>
+											<a href="{% url 'property_details' prop.id %}">{{ prop.title }} </a>
+										</h4>
+										<p>{{ prop.description|truncatewords:3 }}</p>
+									</div>
+
+									<!-- Property Price and Location -->
+									<div class="single_property_price">
+										{{ prop.location }}
+										<span>Ksh {{ prop.price }}</span>
+
+										<!-- Five Stars -->
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+
+										{% if user.is_staff %}
+											<a href="{% url 'edit_property' prop.id %}"
+											class="btn btn-success">
+												Edit
+											</a>
+
+											<a href="{% url 'delete_property' prop.id %}"
+											class="btn btn-danger"
+											onclick="return confirm('Are you sure you want to delete {{ prop.title }}?');">
+												Delete
+											</a>
+										{% endif %}
 
 									</div>
-									<div class="single_property_price">
-										High Meadow Lane Mount Pleasant <span>$ 170,000</span>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-									</div>
-								</div><!--- END SINGLE PROPERTY -->
-							</div><!--- END COL -->
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<div class="single_property">
-									<img src="{% static 'assets/img/property/2.jpg' %}" class="img-fluid" alt="" />
-									<div class="single_property_description text-center">
-										<span><i class="fa fa-object-group"></i> 900 sq ft</span>
-										<span><i class="fa fa-bed"></i> 4 Badrooms</span>
-										<span><i class="fa fa-star-o"></i> 2 Baths</span>
-									</div>
-									<div class="single_property_content">
-										<h4><a href="#">Lynn Ogden Lane</a></h4>
-										<p>Lorem Ipsum is not simply random text. It has roots in a piece of classical.
-										</p>
 
-									</div>
-									<div class="single_property_price">
-										High Meadow Lane Mount Pleasant <span>$ 170,000</span>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-									</div>
-								</div><!--- END SINGLE PROPERTY -->
-							</div><!--- END COL -->
+								</div>
+							</div>
+							{% empty %}
+							<div class="col-12 text-center">
+								<p>No properties available.</p>
+							</div>
+							{% endfor %}<!--- END COL -->
 						</div>
 					</div>
 				</div><!--- END COL -->
@@ -174,18 +195,7 @@
 							</div>
 						</form>
 					</div>
-					<div class="single_property_form_agent">
-						<div class="single_property_form_agent_profile">
-							<img src="{% static 'assets/img/team/team-1.jpg' %}" class="img-fluid" alt="" />
-							<h4><i class="fa fa-phone"></i> +88 123 123 123</h4>
-							<h4><a href="#">info@example.com</a></h4>
-						</div>
-						<div class="single_property_form_agent_profile">
-							<img src="{% static 'assets/img/team/team-2.jpg' %}" class="img-fluid" alt="" />
-							<h4><i class="fa fa-phone"></i> +88 123 123 123</h4>
-							<h4><a href="#">info@example.com</a></h4>
-						</div>
-					</div>
+					
 				</div><!--- END COL -->
 			</div>
 		</div>

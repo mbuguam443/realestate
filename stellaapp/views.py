@@ -5,11 +5,19 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 
 from .forms import PropertyForm
 # Create your views here.
 def home(request):
-    return render(request,'index_video.html')
+    # Fetch all properties from the database
+    properties = Property.objects.all().order_by('-id')[:9]
+
+    # Send the properties to property.html
+    mydict = {
+        'properties': properties
+    }
+    return render(request,'index_video.html',context=mydict)
 def about(request):
     return render(request,'about.html')
 def notfound(request):
@@ -18,6 +26,8 @@ def agent_profile(request):
     return render(request,'agent_profile.html')
 def blog_post(request):
     return render(request,'blog-post.html')
+def gallery(request):
+    return render(request,'gallery.html')
 def blog(request):
     return render(request,'blog.html')
 def contact(request):
@@ -57,7 +67,7 @@ def property_details(request, pk):
     return render(request, 'property-details.html', context)
 def property(request):
     # Fetch all properties from the database
-    properties = Property.objects.all().order_by('-id')
+    properties = Property.objects.all().order_by('-id')[:9]
 
     # Send the properties to property.html
     mydict = {
@@ -148,3 +158,76 @@ def markread(request, pk):
     enquiry.save()
 
     return redirect('messagesClient')
+@staff_member_required
+def delete_property(request, pk):
+    property = get_object_or_404(Property, pk=pk)
+
+    if request.method == "GET":
+        property.delete()
+        return redirect('property')
+
+    return redirect('property_details', pk=pk)    
+@staff_member_required
+def edit_property(request, pk):
+    property = get_object_or_404(Property, pk=pk)
+
+    if request.method == 'POST':
+        form = PropertyForm(
+            request.POST,
+            request.FILES,
+            instance=property
+        )
+
+        if form.is_valid():
+            form.save()
+            return redirect('property_details', pk=property.pk)
+
+    else:
+        form = PropertyForm(instance=property)
+
+    return render(
+        request,
+        'editproperty.html',
+        {
+            'form': form,
+            'property': property
+        }
+    )
+
+def property_search(request):
+
+    properties = Property.objects.all()
+
+    location = request.GET.get('location')
+    property_type = request.GET.get('property_type')
+    status = request.GET.get('status')
+    max_price = request.GET.get('max_price')
+    bedrooms = request.GET.get('bedrooms')
+    bathrooms = request.GET.get('bathrooms')
+    min_area = request.GET.get('min_area')
+
+    if location:
+        properties = properties.filter(location__icontains=location)
+
+    if property_type:
+        properties = properties.filter(property_type=property_type)
+
+    
+
+    if max_price:
+        properties = properties.filter(price__lte=max_price)
+
+    if bedrooms:
+        properties = properties.filter(bedrooms__gte=bedrooms)
+
+    if bathrooms:
+        properties = properties.filter(bathrooms__gte=bathrooms)
+
+    if min_area:
+        properties = properties.filter(area__gte=min_area)
+
+    return render(
+        request,
+        'index_video.html',
+        {'properties': properties}
+    )

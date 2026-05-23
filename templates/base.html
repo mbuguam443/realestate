@@ -3,44 +3,79 @@
 <html lang="en">
 
 <head>
-	<!-- Meta -->
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-	<!-- SITE TITLE -->
-	<title>{% block title %} Hilux - Real Estate HTML Template {% endblock %}</title>
-	<!-- Latest Bootstrap min CSS -->
-	<link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
-	<!-- Google Font -->
-	<link href="https://fonts.googleapis.com/css2?family=Exo:wght@300;400;500;600;700;800;900&display=swap"
-		rel="stylesheet">
-	<!-- Font Awesome CSS -->
-	<link rel="stylesheet" href="{% static 'assets/fonts/font-awesome.min.css' %}">
-	<link rel="stylesheet" href="{% static 'assets/fonts/themify-icons.css' %}">
-	<!--- owl carousel Css-->
-	<link rel="stylesheet" href="{% static 'assets/owlcarousel/css/owl.carousel.css' %}">
-	<link rel="stylesheet" href="{% static 'assets/owlcarousel/css/owl.theme.css' %}">
-	<!--fonts icons Css-->
-	<link rel="stylesheet" href="{% static 'assets/css/fonts.css' %}">
-	<!--prettyPhoto css-->
-	<link href="{% static 'assets/css/prettyPhoto.css' %}" rel="stylesheet">
-	<!-- MAGNIFIC CSS -->
-	<link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
-	<!-- animate CSS -->
-	<link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
-	<!-- Slick css -->
-	<link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
-	<!-- Style CSS -->
-	<link rel="stylesheet" href="{% static 'assets/css/menu.css' %}">
-	<link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
-	<link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
-	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-		<![endif]-->
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Primary SEO -->
+    <title>{% block title %}Ardivora Estates | Find Your Dream Property{% endblock %}</title>
+
+    <meta name="description"
+        content="{% block meta_description %}Buy, rent and invest in premium properties with Ardivora Estates. Explore houses, apartments, land and commercial properties across Kenya.{% endblock %}">
+
+    <meta name="keywords"
+        content="{% block meta_keywords %}real estate, property, houses for sale, apartments, land, Kenya property, Ardivora Estates{% endblock %}">
+
+    <meta name="author" content="Ardivora Estates">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ request.build_absolute_uri }}">
+
+    <!-- Open Graph (Facebook, LinkedIn) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Ardivora Estates">
+
+    <meta property="og:title"
+        content="{% block og_title %}Ardivora Estates | Find Your Dream Property{% endblock %}">
+
+    <meta property="og:description"
+        content="{% block og_description %}Premium real estate listings, land, apartments and homes available across Kenya.{% endblock %}">
+
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <meta property="og:image"
+        content="{% block og_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'assets/img/logo.png' %}{% endblock %}">
+
+    <!-- Twitter/X -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta name="twitter:title"
+        content="{% block twitter_title %}Ardivora Estates{% endblock %}">
+
+    <meta name="twitter:description"
+        content="{% block twitter_description %}Premium real estate listings and investment opportunities.{% endblock %}">
+
+    <meta name="twitter:image"
+        content="{% block twitter_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'assets/img/logo.png' %}{% endblock %}">
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'assets/img/favicon.ico' %}">
+
+    <!-- Latest Bootstrap min CSS -->
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Exo:wght@300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="{% static 'assets/fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/themify-icons.css' %}">
+
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="{% static 'assets/owlcarousel/css/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/owlcarousel/css/owl.theme.css' %}">
+
+    <!-- Other CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/fonts.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/prettyPhoto.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/menu.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
 </head>
 
 <body data-spy="scroll" data-offset="80">
