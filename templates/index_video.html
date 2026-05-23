@@ -238,7 +238,7 @@
 				<div class="col-lg-4 col-sm-4 col-xs-12 mix bathroom kitchen garage">
 					<div class="grid">
 						<figure class="effect-apollo">
-							<img src="assets/img/portfolio/1.jpg" class="img-fluid" alt="" />
+							<img src="{% static 'assets/img/portfolio/1.jpg' %}" class="img-fluid" alt="" />
 							<figcaption>
 								<a class="prettyPhoto image_zoom" href="assets/img/portfolio/1.jpg"></a>
 								<p><a href="#" data-toggle="modal" data-target="#projectModal">Your Dream House</a></p>
@@ -349,7 +349,7 @@
 			<div class="row text-center">
 				<div class="col-lg-3 col-sm-3 col-xs-12">
 					<div class="single_team">
-						<img src="{% static 'assets/img/team/team-1.jpg' %}" class="img-fluid" alt="" />
+						<img src="{% static 'assets/img/team/team-1.png' %}" class="img-fluid" alt="" />
 						<h3>Juthi Ahmed</h3>
 						<p>Co Founder</p>
 						<ul class="list-inline">
@@ -361,7 +361,7 @@
 				</div><!--- END COL -->
 				<div class="col-lg-3 col-sm-3 col-xs-12">
 					<div class="single_team">
-						<img src="{% static 'assets/img/team/team-2.jpg' %}" class="img-fluid" alt="" />
+						<img src="{% static 'assets/img/team/team-2.png' %}" class="img-fluid" alt="" />
 						<h3>Masum Billah</h3>
 						<p>Co Founder</p>
 						<ul class="list-inline">
@@ -373,7 +373,7 @@
 				</div><!--- END COL -->
 				<div class="col-lg-3 col-sm-3 col-xs-12">
 					<div class="single_team">
-						<img src="{% static 'assets/img/team/team-3.jpg' %}" class="img-fluid" alt="" />
+						<img src="{% static 'assets/img/team/team-3.png' %}" class="img-fluid" alt="" />
 						<h3>Syed Ekram</h3>
 						<p>Co Founder</p>
 						<ul class="list-inline">
@@ -385,7 +385,7 @@
 				</div><!--- END COL -->
 				<div class="col-lg-3 col-sm-3 col-xs-12">
 					<div class="single_team">
-						<img src="{% static 'assets/img/team/team-4.jpg' %}" class="img-fluid" alt="" />
+						<img src="{% static 'assets/img/team/team-4.png' %}" class="img-fluid" alt="" />
 						<h3>Hanjala Haque</h3>
 						<p>Co Founder</p>
 						<ul class="list-inline">
@@ -408,28 +408,34 @@
 				<div class="col-lg-8 offset-lg-2 col-sm-12 col-xs-12 text-center">
 					<div class="testimonial1-carousel">
 						<div class="single-testimonial">
-							<img src="{% static 'assets/img/testimonial/1.jpg' %}" alt="">
-							<h4>Mark Richard</h4>
-							<span>Architecture</span>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae risus nec dui
-								venenatis dignissim. Aenean vitae metus in augue pretium ultrices. Duis dictum eget
-								dolor vel blandit.</p>
+							<img src="{% static 'assets/img/testimonial/2.png' %}" alt="">
+							<h4>John Mwangi</h4>
+							<span>Home Buyer</span>
+							<p>
+								Finding the perfect home was easy with this platform. The property details
+								were accurate, and the agent guided us through every step of the process.
+							</p>
 						</div>
+
 						<div class="single-testimonial">
-							<img src="{% static 'assets/img/testimonial/2.jpg' %}" alt="">
-							<h4>Mark Richard</h4>
-							<span>Architecture</span>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae risus nec dui
-								venenatis dignissim. Aenean vitae metus in augue pretium ultrices. Duis dictum eget
-								dolor vel blandit.</p>
+							<img src="{% static 'assets/img/testimonial/1.png' %}" alt="">
+							<h4>Mary Wanjiku</h4>
+							<span>Property Investor</span>
+							<p>
+								I was able to identify promising investment opportunities quickly. The
+								listings are well organized and provide all the information needed to make
+								informed decisions.
+							</p>
 						</div>
+
 						<div class="single-testimonial">
-							<img src="{% static 'assets/img/testimonial/3.jpg' %}" alt="">
-							<h4>Mark Richard</h4>
-							<span>Architecture</span>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae risus nec dui
-								venenatis dignissim. Aenean vitae metus in augue pretium ultrices. Duis dictum eget
-								dolor vel blandit.</p>
+							<img src="{% static 'assets/img/testimonial/3.png' %}" alt="">
+							<h4>David Kimani</h4>
+							<span>Tenant</span>
+							<p>
+								The search process was straightforward and I found a rental property that
+								matched my budget and location preferences within a few days.
+							</p>
 						</div>
 					</div>
 				</div><!-- END COL -->
@@ -483,9 +489,8 @@
 							</div>
 						</div>
 						<div class="blog_content">
-							<h3><a href="blog.html">Team you want to work with mistake runners</a></h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae risus nec dui
-								venenatis dignissim.</p>
+							<h3><a href="blog.html">How to Choose the Right Home</a></h3>
+							<p>Consider location, security, accessibility, schools, and future development plans before purchasing a property..</p>
 						</div>
 					</div>
 				</div><!-- END COL-->
@@ -500,9 +505,8 @@
 							</div>
 						</div>
 						<div class="blog_content">
-							<h3><a href="blog.html">Lights winged seasons fish abundantly evening</a></h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae risus nec dui
-								venenatis dignissim.</p>
+							<h3><a href="blog.html">Benefits of Investing in Property</a></h3>
+							<p>Real estate remains one of the most reliable long-term investments, offering both rental income and capital appreciation.</p>
 						</div>
 					</div>
 				</div><!-- END COL-->
@@ -517,9 +521,8 @@
 							</div>
 						</div>
 						<div class="blog_content">
-							<h3><a href="blog.html">Winged moved stars, food creature seed night</a></h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae risus nec dui
-								venenatis dignissim.</p>
+							<h3><a href="blog.html">Property Viewing Checklist</a></h3>
+							<p>Inspect water supply, electricity, drainage, security features, and structural condition before making a decision..</p>
 						</div>
 					</div>
 				</div><!-- END COL-->

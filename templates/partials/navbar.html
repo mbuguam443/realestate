@@ -28,6 +28,7 @@
 								{% endif %}</a></li>
 							{% endif %}
 							<li><a class="nav-link" href="{% url 'property' %}">Property</a></li>
+							<li><a class="nav-link" href="{% url 'faq' %}">FAQs</a></li>
 							<li class="has-children">
 								{% if user.is_authenticated %}
 									<a href="#" class="nav-link">
@@ -45,7 +46,6 @@
 									<li><a href="{% url 'agent_profile' %}" class="nav-link">agent profile</a></li>
 									<li><a href="{% url 'login' %}" class="nav-link">login page</a></li>
 									<li><a href="{% url 'register' %}" class="nav-link">register page</a></li>
-									<li><a href="{% url 'faq' %}" class="nav-link">Faqs</a></li>
 									<li><a href="{% url 'notfound' %}" class="nav-link">404 page</a></li>
 									<li><a href="{% url 'logout' %}" class="nav-link">Log out</a></li>
 								</ul>

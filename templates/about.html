@@ -3,74 +3,78 @@
 
 {% block content %}
 <!-- START SECTION TOP -->
-	<section class="section-top">
-		<div class="container">
-			<div class="col-lg-10 offset-lg-1 col-xs-12 text-center">
-				<div class="section-top-title wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s"
-					data-wow-offset="0">
-					<h1>About Page</h1>
-				</div><!-- //.HERO-TEXT -->
-			</div><!--- END COL -->
-		</div><!--- END CONTAINER -->
-	</section>
-	<!-- END SECTION TOP -->
+<section class="section-top">
+	<div class="container">
+		<div class="col-lg-10 offset-lg-1 col-xs-12 text-center">
+			<div class="section-top-title wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s"
+				data-wow-offset="0">
+				<h1>About Page</h1>
+			</div><!-- //.HERO-TEXT -->
+		</div><!--- END COL -->
+	</div><!--- END CONTAINER -->
+</section>
+<!-- END SECTION TOP -->
 
-	<!-- START ABOUT US -->
-	<section id="about" class="about-us section-padding">
-		<div class="container">
-			<div class="section-title text-center wow zoomIn">
-				<h2>About us</h2>
-				<div></div>
+<!-- START ABOUT US -->
+<section id="about" class="about-us section-padding">
+	<div class="container">
+		<div class="section-title text-center wow zoomIn">
+			<h2>About Us</h2>
+			<div></div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-6 col-sm-12 col-xs-12">
+				<div class="about-us-content">
+					<h2>Your Trusted Real Estate Partner</h2>
+
+					<p>
+						We are dedicated to helping individuals, families, and
+						investors find the perfect property. Whether you are
+						buying, selling, renting, or investing, our platform
+						provides reliable listings and professional guidance to
+						make the process simple and transparent.
+					</p>
+
+					<ul>
+						<li><i class="fa fa-check"></i>Verified property listings</li>
+						<li><i class="fa fa-check"></i>Residential and commercial properties</li>
+						<li><i class="fa fa-check"></i>Professional support and consultation</li>
+						<li><i class="fa fa-check"></i>Easy property search and comparison</li>
+					</ul>
+
+					<a href="{% url 'property'  %}">Browse Properties</a>
+				</div>
 			</div>
-			<div class="row">
-				<div class="col-lg-6 col-sm-12 col-xs-12">
-					<div class="about-us-content">
-						<h2>About Our Agency</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi perferendis magnam ea
-							necessitatibus, officiis voluptas odit! Aperiam omnis, cupiditate laudantium velit nostrum,
-							exercitationem accusamus, possimus soluta illo.Lorem ipsum dolor sit. Cupiditate laudantium
-							velit nostrum.</p>
-						<ul>
-							<li><i class="fa fa-check"></i>Excepturi perferendis magnam ea necessitatibus</li>
-							<li><i class="fa fa-check"></i>Aperiam omnis, cupiditate laudantium</li>
-							<li><i class="fa fa-check"></i>Exercitationem accusamus, possimus soluta.</li>
-							<li><i class="fa fa-check"></i>Lorem ipsum dolor sit amet ea necessitatibus</li>
-						</ul>
-						<a href="#">Read More</a>
-					</div>
-				</div><!-- END COL -->
-				<div class="col-lg-6 col-sm-12 col-xs-12">
-					<div class="about_img">
-						<img src="{% static 'assets/img/2.jpg' %}" class="img-fluid" alt="" />
-					</div>
-				</div><!-- END COL -->
-			</div><!-- END ROW -->
-		</div><!-- END CONTAINER -->
-	</section>
-	<!-- END ABOUT US  -->
 
-	<!-- START HOW IT WORKS -->
-	<section
-    data-stellar-background-ratio="0.3"
-    class="about_video"
-    style="background-image: url('{% static "assets/img/bg/video-bg.jpg" %}');
-           background-size: cover;
-           background-position: center center;">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 col-sm-12 col-xs-12 text-center">
-					<div class="our_video">
-						<h1>Take a video tour</h1>
-						<a class="video-play" href="https://vimeo.com/414300920"><i class="fa fa-play"></i></a>
-					</div>
-					<!-- END VIDEO POPUP -->
-				</div><!--- END COL -->
-			</div><!--- END ROW -->
-		</div><!--- END CONTAINER -->
-	</section>
-	<!-- END HOW IT WORKS -->
+			<div class="col-lg-6 col-sm-12 col-xs-12">
+				<div class="about_img">
+					<img src="{% static 'assets/img/2.jpg' %}" class="img-fluid" alt="About Our Agency" />
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- END ABOUT US  -->
 
-	<!-- START TEAM US -->
+<!-- START HOW IT WORKS -->
+<section data-stellar-background-ratio="0.3" class="about_video" style="background-image: url('{% static "
+	assets/img/bg/video-bg.jpg" %}'); background-size: cover; background-position: center center;">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 col-sm-12 col-xs-12 text-center">
+				<div class="our_video">
+					<h1>Take a video tour</h1>
+					<a class="video-play" href="https://vimeo.com/414300920"><i class="fa fa-play"></i></a>
+				</div>
+				<!-- END VIDEO POPUP -->
+			</div><!--- END COL -->
+		</div><!--- END ROW -->
+	</div><!--- END CONTAINER -->
+</section>
+<!-- END HOW IT WORKS -->
+
+<!-- START TEAM US -->
 	<section id="team" class="our_team section-padding">
 		<div class="container">
 			<div class="section-title text-center wow zoomIn">
@@ -80,7 +84,7 @@
 			<div class="row text-center">
 				<div class="col-lg-3 col-sm-3 col-xs-12">
 					<div class="single_team">
-						<img src="{% static 'assets/img/team/team-1.jpg' %}" class="img-fluid" alt="" />
+						<img src="{% static 'assets/img/team/team-1.png' %}" class="img-fluid" alt="" />
 						<h3>Juthi Ahmed</h3>
 						<p>Co Founder</p>
 						<ul class="list-inline">
@@ -92,7 +96,7 @@
 				</div><!--- END COL -->
 				<div class="col-lg-3 col-sm-3 col-xs-12">
 					<div class="single_team">
-						<img src="{% static 'assets/img/team/team-2.jpg' %}" class="img-fluid" alt="" />
+						<img src="{% static 'assets/img/team/team-2.png' %}" class="img-fluid" alt="" />
 						<h3>Masum Billah</h3>
 						<p>Co Founder</p>
 						<ul class="list-inline">
@@ -104,7 +108,7 @@
 				</div><!--- END COL -->
 				<div class="col-lg-3 col-sm-3 col-xs-12">
 					<div class="single_team">
-						<img src="{% static 'assets/img/team/team-3.jpg' %}" class="img-fluid" alt="" />
+						<img src="{% static 'assets/img/team/team-3.png' %}" class="img-fluid" alt="" />
 						<h3>Syed Ekram</h3>
 						<p>Co Founder</p>
 						<ul class="list-inline">
@@ -116,7 +120,7 @@
 				</div><!--- END COL -->
 				<div class="col-lg-3 col-sm-3 col-xs-12">
 					<div class="single_team">
-						<img src="{% static 'assets/img/team/team-4.jpg' %}" class="img-fluid" alt="" />
+						<img src="{% static 'assets/img/team/team-4.png' %}" class="img-fluid" alt="" />
 						<h3>Hanjala Haque</h3>
 						<p>Co Founder</p>
 						<ul class="list-inline">

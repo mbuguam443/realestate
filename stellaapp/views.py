@@ -6,6 +6,8 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
+from django.core.mail import send_mail
+from .forms import ContactForm
 
 from .forms import PropertyForm
 # Create your views here.
@@ -31,7 +33,30 @@ def gallery(request):
 def blog(request):
     return render(request,'blog.html')
 def contact(request):
-    return render(request,'contact.html')
+    print("Hello there")
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            subject = form.cleaned_data['subject']
+            message = form.cleaned_data['message']
+
+            send_mail(
+                subject,
+                f"Name: {name}\nEmail: {email}\n\n{message}",
+                email,
+                ['mbuguam443@gmail.com'],
+                fail_silently=False,
+            )
+
+            return render(request, 'thank-you.html')
+
+    else:
+        form = ContactForm()
+
+    return render(request, 'contact.html', {'form': form})
 def faq(request):
     return render(request,'faq.html')
 def property_details(request, pk):
