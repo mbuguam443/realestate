@@ -1,6 +1,37 @@
 {% extends 'base.html' %}
 {% load static %}
 
+
+{% block title %}
+Properties for Sale & Rent in Kenya | Ardivora Estates
+{% endblock %}
+
+{% block meta_description %}
+Browse houses, apartments, land, commercial properties, and investment opportunities across Kenya. Find your ideal property with Ardivora Estates.
+{% endblock %}
+
+{% block meta_keywords %}
+properties for sale Kenya, houses for sale Kenya, apartments for rent Kenya, land for sale Kenya, commercial property Kenya, real estate listings Kenya
+{% endblock %}
+
+{% block og_title %}
+Properties for Sale & Rent in Kenya | Ardivora Estates
+{% endblock %}
+
+{% block og_description %}
+Explore premium real estate listings including homes, apartments, land, and commercial properties across Kenya.
+{% endblock %}
+
+{% block twitter_title %}
+Properties for Sale & Rent in Kenya
+{% endblock %}
+
+{% block twitter_description %}
+Discover quality properties for sale and rent across Kenya with Ardivora Estates.
+{% endblock %}
+
+
+
 {% block content %}
 
 	<!-- START SECTION TOP -->
@@ -24,7 +55,7 @@
 				<div></div>
 			</div>
 			<div class="row">
-		{% for property in properties %}
+		{% for property in page_obj %}
 		<div class="col-md-4 col-sm-12 col-xs-12">
 			<div class="single_property">
 
@@ -94,6 +125,45 @@
 		</div>
 		{% endfor %}
 	</div><!--- END ROW -->
+	      <!-- START PAGINATION -->
+			<div id="pagination">
+				<nav>
+					<ul class="pagination blog_pagination">
+
+						{% if page_obj.has_previous %}
+						<li>
+							<a href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+								<span aria-hidden="true">&laquo;</span>
+							</a>
+						</li>
+						{% endif %}
+
+						{% for num in page_obj.paginator.page_range %}
+							{% if num >= page_obj.number|add:'-2' and num <= page_obj.number|add:'2' %}
+								{% if page_obj.number == num %}
+									<li class="active">
+										<a href="?page={{ num }}">{{ num }}</a>
+									</li>
+								{% else %}
+									<li>
+										<a href="?page={{ num }}">{{ num }}</a>
+									</li>
+								{% endif %}
+							{% endif %}
+						{% endfor %}
+
+						{% if page_obj.has_next %}
+						<li>
+							<a href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+								<span aria-hidden="true">&raquo;</span>
+							</a>
+						</li>
+						{% endif %}
+
+					</ul>
+				</nav>
+			</div>
+			<!-- END PAGINATION -->
 		</div><!--- END CONTAINER -->
 	</section>
 	<!-- END  PROPERTY -->

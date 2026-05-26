@@ -143,7 +143,7 @@
 				<div></div>
 			</div>
 			<div class="row">
-		{% for property in properties %}
+		{% for property in page_obj  %}
 		<div class="col-md-4 col-sm-12 col-xs-12">
 			<div class="single_property">
 
@@ -213,9 +213,50 @@
 		</div>
 		{% endfor %}
 	</div><!--- END ROW -->
+	      <!-- START PAGINATION -->
+			<div id="pagination">
+				<nav>
+					<ul class="pagination blog_pagination">
+
+						{% if page_obj.has_previous %}
+						<li>
+							<a href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+								<span aria-hidden="true">&laquo;</span>
+							</a>
+						</li>
+						{% endif %}
+
+						{% for num in page_obj.paginator.page_range %}
+							{% if num >= page_obj.number|add:'-2' and num <= page_obj.number|add:'2' %}
+								{% if page_obj.number == num %}
+									<li class="active">
+										<a href="?page={{ num }}">{{ num }}</a>
+									</li>
+								{% else %}
+									<li>
+										<a href="?page={{ num }}">{{ num }}</a>
+									</li>
+								{% endif %}
+							{% endif %}
+						{% endfor %}
+
+						{% if page_obj.has_next %}
+						<li>
+							<a href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+								<span aria-hidden="true">&raquo;</span>
+							</a>
+						</li>
+						{% endif %}
+
+					</ul>
+				</nav>
+			</div>
+			<!-- END PAGINATION -->
 		</div><!--- END CONTAINER -->
 	</section>
 	<!-- END  PROPERTY -->
+
+	
 
 	<!-- START PORTFOLIO -->
 	<section id="gallery" class="works_area">

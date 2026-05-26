@@ -8,18 +8,22 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from django.core.mail import send_mail
 from .forms import ContactForm
+from django.core.paginator import Paginator
 
 from .forms import PropertyForm
 # Create your views here.
 def home(request):
-    # Fetch all properties from the database
-    properties = Property.objects.all().order_by('-id')[:9]
+    properties = Property.objects.all().order_by('-id')
 
-    # Send the properties to property.html
-    mydict = {
-        'properties': properties
-    }
-    return render(request,'index_video.html',context=mydict)
+    paginator = Paginator(properties, 9)  # 9 properties per page
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'index_video.html', {
+        'page_obj': page_obj
+    })
+   
 def about(request):
     return render(request,'about.html')
 def notfound(request):
@@ -76,7 +80,7 @@ def property_details(request, pk):
 
         messages.success(request, "Your enquiry has been submitted successfully.")
         
-        return redirect('property_details',pk=pk)
+        return redirect('thank_you')
 
     # Get a single property by its primary key (id)
     property = get_object_or_404(Property, pk=pk)
@@ -91,14 +95,16 @@ def property_details(request, pk):
 
     return render(request, 'property-details.html', context)
 def property(request):
-    # Fetch all properties from the database
-    properties = Property.objects.all().order_by('-id')[:9]
+    properties = Property.objects.all().order_by('-id')
 
-    # Send the properties to property.html
-    mydict = {
-        'properties': properties
-    }
-    return render(request, 'property.html', context=mydict)
+    paginator = Paginator(properties, 9)  # 9 properties per page
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'property.html', {
+        'page_obj': page_obj
+    })
 def register(request):
     return render(request,'register.html')
 def login_view(request):
@@ -221,7 +227,7 @@ def edit_property(request, pk):
 
 def property_search(request):
 
-    properties = Property.objects.all()
+    properties = Property.objects.all().order_by('-id')
 
     location = request.GET.get('location')
     property_type = request.GET.get('property_type')
@@ -237,7 +243,8 @@ def property_search(request):
     if property_type:
         properties = properties.filter(property_type=property_type)
 
-    
+    if status:
+        properties = properties.filter(status=status)
 
     if max_price:
         properties = properties.filter(price__lte=max_price)
@@ -251,8 +258,23 @@ def property_search(request):
     if min_area:
         properties = properties.filter(area__gte=min_area)
 
+    # Pagination
+    paginator = Paginator(properties, 9)  # 9 properties per page
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
     return render(
         request,
         'index_video.html',
-        {'properties': properties}
+        {
+            'page_obj': page_obj,
+            'location': location,
+            'property_type': property_type,
+            'status': status,
+            'max_price': max_price,
+            'bedrooms': bedrooms,
+            'bathrooms': bathrooms,
+            'min_area': min_area,
+        }
     )
