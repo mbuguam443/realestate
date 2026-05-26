@@ -26,8 +26,8 @@ def home(request):
    
 def about(request):
     return render(request,'about.html')
-def notfound(request):
-    return render(request,'404.html')
+def notfound(request, exception):
+    return render(request,'404.html', status=404)
 def agent_profile(request):
     return render(request,'agent_profile.html')
 def blog_post(request):

@@ -20,6 +20,8 @@ from django.conf.urls.static import static
 
 from real_estate import settings
 
+handler404 = 'stellaapp.views.notfound'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('stellaapp.urls'))
